@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CaixaEletronico.Models.Notas>
+<button type="button" class="collapsible active">Overview do caixa</button>
+<div class="content">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:40%;">
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th style="width:60%;">
+                    @Html.DisplayNameFor(model => model.Quantidade)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @*<i href="item.Imagem" class="notas"></i>*@
+                        <img src="@Url.Content(item.Imagem)" class="notas" />
+                        @*@Html.DisplayFor(modelItem => item.Valor)*@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantidade)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

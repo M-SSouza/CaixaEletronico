@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Saque";
+    <link href="~/css/styleHome.css" type="text/css" rel="stylesheet" />
+    <script src="~/js/scriptHome.js"></script>
+}
+
+<div class="jumbotron">
+    <h1>Saque</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-8" id="replace">
+        @{
+            await Html.RenderPartialAsync("Saque.cshtml", new CaixaEletronico.Models.Saque());
+        }
+    </div>
+    <div class="col-md-4" id="replaceCaixa">
+        @await Component.InvokeAsync("Caixa")
+    </div>
+</div>

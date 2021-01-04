@@ -1,0 +1,44 @@
+﻿@model CaixaEletronico.Models.Saque
+@{
+
+}
+<div class="jumbotron">
+
+    <form class="form-row" asp-action="Saque" asp-controller="Home" data-ajax="true" data-ajax-method="post" data-ajax-update="#replace"
+          data-ajax-success="Success">
+        <div class="col-sm-12">
+            <h4>Insira o valor do saque e clique em "Sacar"</h4>
+        </div>
+        <div class="col-sm-12">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text" id="btnGroupAddon2">R$</div>
+                </div>
+                <input type="number" min="1" name="Valor" id="money" class="form-control" placeholder="Valor do saque" aria-describedby="btnGroupAddon2">
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <span asp-validation-for="Valor" class="text-danger"></span>
+            @if (ViewBag.Sucesso != null)
+            {
+                <span class="text-info">@ViewBag.Sucesso</span>
+            }
+        </div>
+
+        <br />
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary">Sacar</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    function Success() {
+        $.get("Home/Caixa", function (data, status) {
+            if (data.length > 0) {
+                $('#replaceCaixa').html(data);
+            }
+        });
+    }
+</script>
